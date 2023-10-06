@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>003</title>
+</head>
+<body>
+    <script>
+
+        let primes = [1];
+
+        function largestPrimeFactor(number) {
+
+            for (let i=2; i<=number; i++) {
+                    for (let j=2; j<=i; j++) {
+                        
+                        if (i % j == 0 && i != 2) {
+                            break;
+                        }
+                        else if (i == 2 && j == 2) {
+                            primes.push(2);
+                        }
+                        else if (j == i-1 && number % i == 0) {
+                            primes.pop();
+                            primes.push(i);
+                            
+                        }
+                    }     
+            }
+            return primes[primes.length-1]
+        }
+        
+        largestPrimeFactor();
+
+    </script>
+</body>
+</html>
